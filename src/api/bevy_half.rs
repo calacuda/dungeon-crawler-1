@@ -8,7 +8,6 @@ use std::thread::{JoinHandle, spawn};
 
 pub struct HttpApiPlugin {
     api_channel: BevyApi,
-    // http_half: HttpApi,
     _jh: JoinHandle<Result<(), std::io::Error>>,
 }
 

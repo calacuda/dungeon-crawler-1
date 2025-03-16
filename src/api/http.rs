@@ -14,7 +14,8 @@ pub async fn start_api(api_channel: HttpApi) -> std::io::Result<()> {
             .service(echo)
             .route("/hey", web::get().to(manual_hello))
     })
-    .bind(("127.0.0.1", 5000))?;
+    .bind(("127.0.0.1", 5000))?
+    .bind(("localhost", 5000))?;
 
     #[cfg(not(all(
         target_os = "windows",
@@ -22,7 +23,7 @@ pub async fn start_api(api_channel: HttpApi) -> std::io::Result<()> {
         target_os = "android",
         target_os = "none"
     )))]
-    let server = server.bind_uds(format!("/tmp/{GAME_NAME}/game.sock"))?;
+    let server = server.bind_uds(format!("/tmp/{GAME_NAME}.sock"))?;
 
     server.run().await
 }

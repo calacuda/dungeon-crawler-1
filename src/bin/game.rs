@@ -12,8 +12,6 @@ use std::f32::consts::PI;
 struct Shape;
 
 fn main() {
-    // let (bevy_api_channel, _jh) = start_api
-
     App::new()
         .add_plugins((
             DefaultPlugins
