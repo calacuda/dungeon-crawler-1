@@ -4,6 +4,7 @@ use bevy::{
     prelude::*,
     window::PresentMode,
 };
+use dc_1::api::bevy_half::HttpApiPlugin;
 use std::f32::consts::PI;
 
 /// A marker component for our shapes so we can query them separately from the ground plane
@@ -11,6 +12,8 @@ use std::f32::consts::PI;
 struct Shape;
 
 fn main() {
+    // let (bevy_api_channel, _jh) = start_api
+
     App::new()
         .add_plugins((
             DefaultPlugins
@@ -27,6 +30,7 @@ fn main() {
                     ..Default::default()
                 }),
             WireframePlugin,
+            HttpApiPlugin::new(),
         ))
         .insert_resource(WireframeConfig {
             global: true,

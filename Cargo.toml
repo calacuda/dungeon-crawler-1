@@ -1,5 +1,5 @@
 [package]
-name = "game-background"
+name = "dc-1"
 version = "0.1.0"
 edition = "2024"
 
@@ -16,7 +16,11 @@ actix = "0.13.5"
 actix-web = "4.10.2"
 actix-web-lab = "0.24.1"
 actix-ws = "0.3.0"
-bevy = "0.15.3"
-bevy-progressbar = { git = "https://github.com/keng9/bevy-progressbar", version = "0.8.0" }
+anyhow = "1.0.97"
+bevy = { version = "0.15", features = ["default", "dynamic_linking"] }
+# bevy-progressbar = { git = "https://github.com/keng9/bevy-progressbar", version = "0.8.0" }
+bincode = { version = "2.0.1", features = ["serde"] }
 clap = { version = "4.5.32", features = ["derive"] }
 crossbeam = { version = "0.8.4", features = ["crossbeam-channel", "nightly"] }
+serde = { version = "1.0.219", features = ["derive"] }
+tokio = { version = "1.44.1", features = ["sync"] }

@@ -1,11 +1,14 @@
 _:
   @just --list
 
-test-client:
-  cargo run --bin client
+# test-client:
+#   cargo run --bin client
+#
+# test-server:
+#   cargo run --bin server
 
-test-server:
-  cargo run --bin server
+run-game:
+  cargo run --bin game
 
 _new-window NAME CMD:
   tmux new-w -t dc-1 -n "{{NAME}}"
