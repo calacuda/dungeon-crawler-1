@@ -27,6 +27,7 @@ impl HttpApiPlugin {
 impl Plugin for HttpApiPlugin {
     fn build(&self, app: &mut App) {
         app.insert_resource(self.api_channel.clone())
+            .add_event::<BevyApiCommand>()
             .add_systems(Update, step_api);
     }
 }
