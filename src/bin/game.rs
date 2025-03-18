@@ -4,7 +4,10 @@ use bevy::{
     prelude::*,
     window::PresentMode,
 };
-use dc_1::api::bevy_half::HttpApiPlugin;
+use dc_1::{
+    AutoTransition, GenerateLevel, InGameState, MainGameState, api::bevy_half::HttpApiPlugin,
+    dungeon_gen::DungeonGen,
+};
 use std::f32::consts::PI;
 
 /// A marker component for our shapes so we can query them separately from the ground plane
@@ -29,6 +32,8 @@ fn main() {
                 }),
             WireframePlugin,
             HttpApiPlugin::new(),
+            AutoTransition,
+            DungeonGen,
         ))
         .insert_resource(WireframeConfig {
             global: true,
@@ -40,6 +45,10 @@ fn main() {
             }
             .into(),
         })
+        .init_state::<MainGameState>()
+        .add_sub_state::<InGameState>()
+        // .init_state::<LevelGenState>()
+        .add_event::<GenerateLevel>()
         .add_systems(Startup, (camera_setup, spawn_cube))
         .add_systems(Update, rotate)
         .run();

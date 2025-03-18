@@ -14,6 +14,7 @@ pub async fn start_api(api_channel: HttpApi) -> std::io::Result<()> {
             .service(echo)
             .route("/hey", web::get().to(manual_hello))
     })
+    .workers(3)
     .bind(("127.0.0.1", 5000))?
     .bind(("localhost", 5000))?;
 
